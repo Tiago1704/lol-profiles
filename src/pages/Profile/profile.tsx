@@ -22,6 +22,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { ChampionFull, useChampionsFull } from "../../hooks/useChampions";
+import { API_URL } from "../../services/config";
 
 // Tipos
 interface ProfileData {
@@ -54,7 +55,7 @@ export function Profile(): JSX.Element {
     const fetchProfile = async () => {
       try {
         const response = await axios.get<ProfileData>(
-          "http://localhost:3001/auth/me",
+          `${API_URL}/auth/me`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -98,7 +99,7 @@ export function Profile(): JSX.Element {
         mainChamps: selectedChamp ? [selectedChamp] : [],
       };
 
-      await axios.put(`http://localhost:3001/profiles/${userData.id}`, updatedData, {
+      await axios.put(`${API_URL}/profiles/${userData.id}`, updatedData, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

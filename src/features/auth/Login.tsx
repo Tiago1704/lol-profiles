@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { loginSuccess } from './authSlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../services/config';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const Login = () => {
     setError(null);
 
     try {
-      const response: any = await axios.post("http://localhost:3001/auth/login", {
+      const response: any = await axios.post(`${API_URL}/auth/login`, {
         email,
         password
       });

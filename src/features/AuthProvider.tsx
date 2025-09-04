@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useState, ReactNode } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { loginSuccess, logout } from './auth/authSlice';
+import { API_URL } from '../services/config';
 
 interface UserData {
   id: string;
@@ -38,7 +39,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const fetchUser = async () => {
       try {
-        const response = await axios.get<UserData>('http://localhost:3001/auth/me', {
+        const response = await axios.get<UserData>(`${API_URL}/auth/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const userData = response.data;

@@ -10,6 +10,7 @@ import {
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { ChampionFull, useChampionsFull } from "../../hooks/useChampions";
+import { API_URL } from "../../services/config";
 
 // Tipos
 interface ProfileData {
@@ -36,7 +37,7 @@ export function UserProfile(): JSX.Element {
     const fetchProfile = async () => {
       try {
         const response = await axios.get<ProfileData>(
-          `http://localhost:3001/profiles/${id}`
+          `${API_URL}/profiles/${id}`
         );
         setUserData(response.data);
       } catch (err) {

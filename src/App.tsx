@@ -8,6 +8,7 @@ import { Profile } from './pages/Profile/profile';
 import { AuthProvider } from './features/AuthProvider';
 import { Register } from './pages/Register/register';
 import { UserProfile } from './pages/UserProfiles/userProfiles';
+import Riot from './pages/Dashboard/Riot';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/user/:id" element={<UserProfile />} />
+            <Route path="/riot.txt" element={<Riot />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>

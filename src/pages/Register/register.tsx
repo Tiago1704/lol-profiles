@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { useChampionsOptions } from "../../hooks/useChampions";
 import { Division, Elo, IUser, Lane } from "./interfaces";
 import axios from "axios";
+import { API_URL } from "../../services/config";
 
 export function Register(): JSX.Element {
     const navigate = useNavigate();
@@ -82,7 +83,7 @@ export function Register(): JSX.Element {
 
         try {
             // Aquí harías el POST a tu backend (puerto 3001)pruebauser@gmail.com prueba123
-            await axios.post("http://localhost:3001/profiles", formData);
+            await axios.post(`${API_URL}/profiles`, formData);
             console.log("Register data:", formData);
             alert("Usuario creado correctamente!");
             navigate("/login");

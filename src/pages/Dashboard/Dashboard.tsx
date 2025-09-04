@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../../services/config";
 
 interface UserListItem {
   id: string;
@@ -28,7 +29,7 @@ const Dashboard = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get<UserListItem[]>(
-          "http://localhost:3001/profiles"
+          `${API_URL}/profiles`
         );
         setUsers(response.data);
         setFilteredUsers(response.data);
